@@ -1,0 +1,31 @@
+body {
+  background: #333333;
+  font-family: sans-serif;
+  font-weight: 400;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+}
+.cube {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+#top {
+  background-image: url("./nlights.jpg");
+  background-size: cover;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+
+
+#content {
+  background-size: cover;
+  background-image: url("./crypto.jpg");
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+h1, .words{
+  color:white;
+}
