@@ -5,7 +5,7 @@
 
 
 body {
-	background: linear-gradient(to right, #0f3564, #164476, #295b8c, #3a6999);
+	background: linear-gradient(to right, #0f3564, #164476, #298c40, #3a993d);
 	animation: run 15s ease infinite;
     background-size: 400% 400%;
 	height: 100vh;
@@ -58,9 +58,9 @@ h3 {
 
 table{
     box-shadow: 3px 5px;
-    max-width: 100%;
+    /* max-width: 100%;
     height: auto;
-    width: auto;
+    width: auto; */
 }
 #cryptolinks{
     border: solid 1px white;
@@ -69,19 +69,19 @@ table{
 td a {
     color:white;
 }
-#graph {
+/* #graph {
     position:relative;
     min-height:auto;
     width:100%;
     display: flex;
     flex-grow:1;
-}
+} */
 
-#app{
+/* #app{
     max-width: 100%;
     width: auto;
     height: auto;
-}
+} */
 
 small{
     color:white;
