@@ -7,14 +7,15 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "htt
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDoTL-pNgBgcnxxzummtiHioI-jE3WhYcA",
-    authDomain: "new-project-38d31.firebaseapp.com",
-    databaseURL: "https://new-project-38d31-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "new-project-38d31",
-    storageBucket: "new-project-38d31.appspot.com",
-    messagingSenderId: "310061468981",
-    appId: "1:310061468981:web:caa5c3a729b6abf499d07c"
-};
+    apiKey: "AIzaSyBdBlsdTCADW3JrpXohnMBPMa9TgmCnG0M",
+    authDomain: "crypto-buddies-a8d5c.firebaseapp.com",
+    databaseURL: "https://crypto-buddies-a8d5c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "crypto-buddies-a8d5c",
+    storageBucket: "crypto-buddies-a8d5c.appspot.com",
+    messagingSenderId: "1058373755726",
+    appId: "1:1058373755726:web:04f25e1ecc36c3213a341f"
+  };
+  
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

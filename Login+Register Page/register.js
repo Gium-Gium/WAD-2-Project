@@ -7,14 +7,15 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "htt
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDoTL-pNgBgcnxxzummtiHioI-jE3WhYcA",
-    authDomain: "new-project-38d31.firebaseapp.com",
-    databaseURL: "https://new-project-38d31-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "new-project-38d31",
-    storageBucket: "new-project-38d31.appspot.com",
-    messagingSenderId: "310061468981",
-    appId: "1:310061468981:web:caa5c3a729b6abf499d07c"
+    apiKey: "AIzaSyBdBlsdTCADW3JrpXohnMBPMa9TgmCnG0M",
+    authDomain: "crypto-buddies-a8d5c.firebaseapp.com",
+    databaseURL: "https://crypto-buddies-a8d5c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "crypto-buddies-a8d5c",
+    storageBucket: "crypto-buddies-a8d5c.appspot.com",
+    messagingSenderId: "1058373755726",
+    appId: "1:1058373755726:web:04f25e1ecc36c3213a341f"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -25,35 +26,39 @@ signUp.addEventListener('click', (e) => {
 
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    var TotalCredits = 5000;
+    var bc = 5000;
     var eth = 0;
     var btc = 0;
     var bnb = 0;
     var doge = 0;
     var sol = 0;
     var ada = 0;
+    var tv = 5000
     var dt = Date();
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            
-            const user = userCredential.user;
 
+            const user = userCredential.user;
             set(ref(database, 'All users in database/' + user.uid), {
                 Email: email,
-                TotalCredits: TotalCredits,
-                DateRegistered:dt,
-                Eth:eth,
-                Btc:btc,
-                Bnb:bnb,
-                Doge:doge,
-                Sol:sol,
-                Ada:ada,
+                Bc: bc,
+                Tv: tv,
+                DateRegistered: dt,
+                Eth: eth,
+                Btc: btc,
+                Bnb: bnb,
+                Doge: doge,
+                Sol: sol,
+                Ada: ada,
             })
-            
-            alert('user created!');
-            window.location.href = "./Login.html";
+
+
+            setTimeout(() => {
+                alert('user created!');
+                window.location.href = "./Login.html";
+            }, 1000);
 
             // ...
         })
@@ -66,40 +71,3 @@ signUp.addEventListener('click', (e) => {
         });
 
 });
-
-
-
-
-// update1.addEventListener('click', (e) => {
-//     // console.log("123");
-
-//     onAuthStateChanged(auth, (user) => {
-//         if (user) {
-//             // User is signed in, see docs for a list of available properties
-//             // https://firebase.google.com/docs/reference/js/firebase.User
-//             const uid = user.uid;
-//             console.log("123")
-//             set(ref(database, 'All users in database/' + user.uid), {
-//                 credits: "1423"
-//             })
-//             // ...
-//         } else {
-//             // User is signed out
-//             // ...
-//         }
-//     });
-
-
-// });
-
-
-// console.log("123")
-// set(ref(database, 'All users in database/'+ user.uid), {
-//     credits: "1423"
-// })
-
-
-
-
-
-
