@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,17 +20,11 @@ const coinRef = ref(db, 'All users in database');
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     onValue(coinRef, (snapshot) => {
       const data = snapshot.val();
       getValues(data, uid)
     });
-    // ...
-  } else {
-    // User is signed out
-    // ...
   }
 });
 
@@ -61,20 +52,12 @@ function addBuyEvent() {
     if (tv >= 0) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
           var totalbtc = quantityBought + balance
-          var totalValue = totalbtc * price + tv
           update(ref(db, 'All users in database/' + user.uid), {
             Btc: totalbtc,
             Bc: tv,
-            Tv: totalValue
-            // extract from another page
           })
           alert('Successfully Bought!')
-          // ...
-        } else {
 
         }
       });
@@ -94,28 +77,16 @@ function addSellEvent() {
     var totalCost = quantitySold * Number(price)
     var tv = Number(document.getElementById('wallet').textContent) + totalCost
     tv = tv.toFixed(2)
-    // var coinValue = document.getElementById('coinName').textContent
-    // var start = coinValue.indexOf('(')
-    // var end = coinValue.indexOf(')')
-    // var firstLetter = coinValue[start+1].toUpperCase()
-    // var remaining = coinValue.substring(start+2,end).toLowerCase()
-    // var symbol = firstLetter + remaining
     if (balance - quantitySold >= 0) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
           var totalbtc = balance - quantitySold
-          var totalValue = totalbtc * price + tv
           update(ref(db, 'All users in database/' + user.uid), {
             Btc: totalbtc,
             Bc: tv,
-            Tv: totalValue
-            // extract from another page
+
           })
           alert("Successfully Sold!")
-          // ...
         } else {
 
         }
@@ -135,20 +106,12 @@ setTimeout(() => {
 
 function addListener(){
   logout.addEventListener('click', (f) => {
-    //record before signing off
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
         update(ref(db, 'Users in the system/' + user.uid), {
           LoginStatus: "Logged Off",
           LoginTime: "NIL"
         })
-        // ...
-      } else {
-        // User is signed out
-        // ...
       }
     });
   

@@ -7,13 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
   <link rel="stylesheet" href="./Light-Dark.css">
-  <link rel="icon" type="image/x-icon" href="./images/profile.png">
+  <link rel="icon" type="image/x-icon" href="./images/logo.png">
   <!-- Axios -->
   <script src='https://unpkg.com/axios/dist/axios.js'></script>
-
-  <!-- Vue 3 -->
-  <script src='https://cdn.jsdelivr.net/npm/vue@next'></script>
-
   <!-- Bootstrap CSS -->
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet'
     integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx' crossorigin='anonymous'>
@@ -153,11 +149,9 @@
 
     function getBCValue() {
       var bcquantity = document.getElementById('BCquantity').textContent
-      console.log(bcquantity)
       var bcprice = 1
       var bcvalue = document.getElementById('BCTotalValue')
       var total = Number(bcquantity) * bcprice
-      console.log(total)
       bcvalue.innerHTML = total
     }
 
@@ -177,7 +171,6 @@
     var str = ``
     function getCoinInfo() {
       for (coin of coinArray) {
-        console.log(coin)
         str += `<h5>${coin.name} --> <a href ="${coin.website}" target='_blank'>Link</a></h5><br>`
       }
       document.getElementById('recommendation').innerHTML = str
@@ -189,7 +182,6 @@
     function getBNBSinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'BNB',
@@ -210,7 +202,6 @@
     function getBTCSinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'BTC',
@@ -231,7 +222,6 @@
     function getADASinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'ADA',
@@ -252,7 +242,6 @@
     function getDOGESinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'DOGE',
@@ -273,7 +262,6 @@
     function getETHSinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'ETH',
@@ -294,7 +282,6 @@
     function getSOLSinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'SOL',
@@ -313,7 +300,6 @@
 
 
     function dummy(price, name) {
-      console.log(price)
       coinPrice = price.toFixed(2)
       previousPrice = document.getElementById(name + 'price').textContent
       quantity = document.getElementById(name + 'quantity').textContent

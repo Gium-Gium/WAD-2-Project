@@ -1,9 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -28,21 +26,14 @@ setTimeout(() => {
 function addListener(){
   logout.addEventListener('click', (f) => {
     //record before signing off
-    console.log('done')
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         update(ref(db, 'Users in the system/' + user.uid), {
           LoginStatus: "Logged Off",
           LoginTime: "NIL"
         })
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
+      } 
     });
   
     signOut(auth).then(() => {

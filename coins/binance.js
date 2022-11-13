@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,18 +20,12 @@ const coinRef = ref(db, 'All users in database');
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     onValue(coinRef, (snapshot) => {
       const data = snapshot.val();
       getValues(data, uid)
     });
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
+  } 
 });
 
 function getValues(data, uid) {
@@ -61,22 +52,13 @@ function addBuyEvent() {
     if (tv >= 0) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
           var totalbnb = quantityBought + balance
-          var totalValue = totalbnb * price + tv
           update(ref(db, 'All users in database/' + user.uid), {
             Bnb: totalbnb,
             Bc: tv,
-            Tv: totalValue
-            // extract from another page
           })
           alert('Successfully Bought!')
-          // ...
-        } else {
-
-        }
+        } 
       });
     }
     else {
@@ -84,8 +66,6 @@ function addBuyEvent() {
     }
   })
 }
-
-
 function addSellEvent() {
   sell.addEventListener('click', (e) => {
     var quantitySold = Number(document.getElementById('transactionqty').value)
@@ -94,29 +74,16 @@ function addSellEvent() {
     var totalCost = quantitySold * Number(price)
     var tv = Number(document.getElementById('wallet').textContent) + totalCost
     tv = tv.toFixed(2)
-    // var coinValue = document.getElementById('coinName').textContent
-    // var start = coinValue.indexOf('(')
-    // var end = coinValue.indexOf(')')
-    // var firstLetter = coinValue[start+1].toUpperCase()
-    // var remaining = coinValue.substring(start+2,end).toLowerCase()
-    // var symbol = firstLetter + remaining
     if (balance - quantitySold >= 0) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
           var totalbnb = balance - quantitySold
-          var totalValue = totalbnb * price + tv
-
           update(ref(db, 'All users in database/' + user.uid), {
             Bnb: totalbnb,
             Bc: tv,
-            Tv: totalValue
-            // extract from another page
           })
           alert("Successfully Sold!")
-          // ...
+
         } else {
 
         }
@@ -139,18 +106,13 @@ function addListener(){
     //record before signing off
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
+
         const uid = user.uid;
         update(ref(db, 'Users in the system/' + user.uid), {
           LoginStatus: "Logged Off",
           LoginTime: "NIL"
         })
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
+      } 
     });
   
     signOut(auth).then(() => {

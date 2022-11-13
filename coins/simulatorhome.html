@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./images/simulator.png">
+  <link rel="icon" type="image/x-icon" href="./images/logo.png">
   <title>Simulator</title>
   <!-- Axios -->
   <script src='https://unpkg.com/axios/dist/axios.js'></script>
@@ -105,7 +105,6 @@
             click on my wallet. It will show the composition of coins and the total value of the wallet at that time.
           </li>
         </ol>
-        <!-- <p>add overview of the posts (aka the tables from each coins)</p> -->
         <div id="app">
           <table style="margin-bottom:20px; margin-left:30px; margin-top:20px; ">
             <tr>
@@ -183,7 +182,6 @@
 
     var coinInfoUrl = 'https://min-api.cryptocompare.com/data/all/coinlist?'
 
-    // <div id='app'></div>
     function generateRow(name, assetWebsite, whitepaper, coinName, proofType, symbol) {
       document.getElementById(name).innerHTML = `
                           <td>
@@ -220,7 +218,6 @@
             .then(response => {
               var accessData = response.data.Data['BNB']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
@@ -242,7 +239,6 @@
             .then(response => {
               var accessData = response.data.Data['BTC']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
@@ -264,9 +260,7 @@
             .then(response => {
               var accessData = response.data.Data['ADA']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
-              console.log(accessData)
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
               var coinName = accessData.CoinName
@@ -287,7 +281,6 @@
             .then(response => {
               var accessData = response.data.Data['DOGE']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
@@ -310,7 +303,6 @@
             .then(response => {
               var accessData = response.data.Data['ETH']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
@@ -332,7 +324,6 @@
             .then(response => {
               var accessData = response.data.Data['SOL']
               var name = accessData.Name
-              console.log(name)
               var imageurl = accessData.ImageUrl
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
@@ -345,7 +336,7 @@
               console.log(error.message);
             });
         },
-      } // methods
+      }
     });
 
     const vm = app.mount('#app');
@@ -353,7 +344,6 @@
     function getSinglePrice(name) {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: name,
@@ -386,22 +376,12 @@
     }
   </script>
   <script>
-    // <div id='app'></div>
     const news = Vue.createApp({
       data() {
         return {
           search: ''
         };
-      }, // data
-      // computed: { 
-      //     derivedProperty() {
-      //         return false;
-      //     }  
-      // }, // computed
-      // created() { 
-      // },
-      // mounted() { 
-      // },
+      },
       methods: {
         retrieveNews(search) {
           newsUrl = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN'
@@ -412,7 +392,6 @@
           })
             .then(response => {
               accessData = response.data.Data
-              console.log(accessData)
               var firstnews = 0
               var secondnews = 0
               var thirdnews = 0
@@ -461,14 +440,12 @@
                                 </div>`
               var newsresult = document.getElementById('newsresult')
               newsresult.innerHTML = result
-
-
             })
             .catch(error => {
               console.log(error.message);
             });
         }
-      } // methods
+      }
     });
     const vm2 = news.mount('#news');
   </script>

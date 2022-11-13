@@ -5,16 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./images/doge.png">
+  <link rel="icon" type="image/x-icon" href="./images/logo.png">
   <title>DOGE Coin</title>
   <link rel="stylesheet" href="./Light-Dark.css">
   <!-- Axios -->
   <script src='https://unpkg.com/axios/dist/axios.js'></script>
-
-  <!-- Vue 3 -->
-  <script src='https://cdn.jsdelivr.net/npm/vue@next'></script>
-
-  <!-- <script src="action.js"></script> -->
   <!-- Bootstrap CSS -->
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet'
     integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx' crossorigin='anonymous'>
@@ -50,7 +45,6 @@
 </head>
 
 <body>
-
   <nav id="nav" class="navbar navbar-expand-lg bg-light sticky-top">
     <div class="container-fluid" id="header">
       <a class="navbar-brand text-white" href="../homepageWithLogin/homepageWithLogin.html"><img
@@ -206,7 +200,6 @@
     function getDOGESinglePrice() {
       var apiKey = 'b6d25f96f139bef5f924e987f529a010daf1b3f4faf934b6a02d671becf8ac3d'
       singlePriceUrl = 'https://min-api.cryptocompare.com/data/price?'
-      // var conversionList = ['BTC', 'ETH', 'USD', 'EUR', 'SGD', 'BNB', 'SOL', 'DOGE', 'ADA']
       axios.get(singlePriceUrl, {
         params: {
           fsym: 'DOGE',

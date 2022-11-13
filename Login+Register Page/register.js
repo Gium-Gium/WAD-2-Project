@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -33,7 +30,6 @@ signUp.addEventListener('click', (e) => {
     var doge = 0;
     var sol = 0;
     var ada = 0;
-    var tv = 5000
     var dt = Date();
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -44,7 +40,6 @@ signUp.addEventListener('click', (e) => {
             set(ref(database, 'All users in database/' + user.uid), {
                 Email: email,
                 Bc: bc,
-                Tv: tv,
                 DateRegistered: dt,
                 Eth: eth,
                 Btc: btc,
@@ -59,15 +54,12 @@ signUp.addEventListener('click', (e) => {
                 alert('user created!');
                 window.location.href = "./Login.html";
             }, 1000);
-
-            // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
 
             alert(errorMessage);
-            // ..
         });
 
 });

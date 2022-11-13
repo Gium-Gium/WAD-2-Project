@@ -39,4 +39,5 @@ let words = [
         word: "Crypto Supply",
         hint: "Limited supply: Volatile pricing based on trading demand. Unlimited supply: Lesser value in the long term."
     },
+    
 ]
