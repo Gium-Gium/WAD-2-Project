@@ -100,3 +100,32 @@ function addListener(){
   
   });
 }
+setTimeout(() => {
+  addResetListener()
+}, 1000);
+
+function addResetListener(){
+  reset.addEventListener('click',(g)=> {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      update(ref(db, 'All users in database/' + user.uid), {
+        Eth: 0,
+        Bc: 5000,
+        Ada: 0,
+        Bnb: 0,
+        Btc:0,
+        Doge:0,
+        Sol:0,
+        // extract from another page
+      })
+      alert('Successfully Reset!')
+      // ...
+    } else {
+
+    }
+  });
+})
+}

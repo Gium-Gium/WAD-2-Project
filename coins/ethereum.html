@@ -31,7 +31,7 @@
     th,
     td,
     table {
-      margin-top: 10px;
+      margin-top: 30px;
       border: 1px solid white
     }
 
@@ -62,7 +62,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">Guide</a>
+            <a class="nav-link active text-white" aria-current="page" href="../Guides/guide.html">Guides</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="../coins/simulatorhome.html">Simulator</a>
@@ -90,7 +90,7 @@
         {{getInfo()}}
       </div>
       <div class="col-xl-4 col-lg-12">
-        <h3 style="color:white">List of Cryptocurrencies</h3>
+        <h3 style="color:white; padding-top:20px">List of Cryptocurrencies</h3>
         <ol id="cryptolinks" style="color:white">
           <li>
             <a href="./bitcoin.html">Bitcoin (BTC) <span><img src="./images/btc.png" alt="" class="img"></span></a>
@@ -254,18 +254,12 @@
             .then(response => {
               var accessData = response.data.Data['ETH']
               var imageurl = accessData.ImageUrl
-              if (accessData.AlgorithmType != 'sha-256') {
-                var algoType = 'NA'
-              }
-              else {
-                var algoType = accessData.AlgorithmType
-              }
               var assetWebsite = accessData.AssetWebsiteUrl
               var whitepaper = accessData.AssetWhitepaperUrl
               var coinName = accessData.CoinName
               var proofType = accessData.ProofType
               var symbol = accessData.Symbol
-              generateTable(algoType, assetWebsite, whitepaper, coinName, proofType, symbol)
+              generateTable(assetWebsite, whitepaper, coinName, proofType, symbol)
             })
             .catch(error => {
               console.log(error.message);
@@ -275,39 +269,39 @@
     });
     const vm = app.mount('#app');
 
-    function generateTable(algoType, assetWebsite, whitepaper, coinName, proofType, symbol) {
+    function generateTable(assetWebsite, whitepaper, coinName, proofType, symbol) {
       document.getElementById('app').innerHTML = `<table>
                       <tr>
-                          <th>Name</th>
-                          <th>Price ($USD)</th>
-                          <th>Algorithm Type</th>
+                          <th style="padding:8px">Name</th>
+                          <th style="padding:8px">Icon</th>
+                          <th style="padding:8px">Price ($USD)</th>
                       </tr>
                           <tr>
-                            <td id='coinName'>
-                              ${coinName} (${symbol}) <br><span><img src="./images/eth.png" style="width:40px" alt=""></span>
-                          </td>
-                          <td id="price">
+                            <td id='coinName' style="padding:8px">
+                              ${coinName} (${symbol})
+                            </td>
+                            <td style="padding:8px">
+                              <img src="./images/${symbol}.png" width="40" height="40">
+                            </td>
+                          <td id="price" style="padding:8px">
                               ${getETHSinglePrice()}
-                          </td>
-                          <td>
-                              ${algoType}
                           </td>
                           </tr>
                           </table>
                         <table>
                           <tr>
-                          <th>Asset Website</th>
-                          <th>White Paper</th>
-                          <th>Proof Type</th>
+                          <th style="padding-top:10px;padding-bottom:10px">Asset Website</th>
+                          <th style="padding-top:10px;padding-bottom:10px">White Paper</th>
+                          <th style="padding-top:10px;padding-bottom:10px">Proof</th>
                           </tr>
                           <tr>
-                          <td>
+                          <td style="padding-top:10px;padding-bottom:10px">
                               <a href="${assetWebsite}" target="blank">AssetWebsite</a>
                           </td>
-                          <td>
+                          <td style="padding-top:10px;padding-bottom:10px">
                               <a href="${whitepaper}" target="blank">Whitepaper</a>
                           </td>
-                          <td>
+                          <td style="padding-top:10px;padding-bottom:10px">
                               ${proofType}
                           </td>
                           </tr>
@@ -320,7 +314,7 @@
                         <small>Current number of coins owned:<span id='qty'></span></small><br><br>
                       </div>
             `
-    }
+                    }
   </script>
   <script type="module" src="./ethereum.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js'

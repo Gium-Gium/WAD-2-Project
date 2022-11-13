@@ -16,42 +16,19 @@ const firebaseConfig = {
   appId: "1:1058373755726:web:04f25e1ecc36c3213a341f"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    onValue(coinRef, (snapshot) => {
-      const data = snapshot.val();
-      getValues(data, uid)
-    });
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
-
 const db = getDatabase(app);
-const coinRef = ref(db, 'All users in database');
 
-
-function getValues(data, uid) {
-  console.log(data[uid])
-}
 
 setTimeout(() => {
   addListener()
-}, 1000);
+}, 500);
 
 function addListener(){
   logout.addEventListener('click', (f) => {
     //record before signing off
+    console.log('done')
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -72,7 +49,7 @@ function addListener(){
       // Sign-out successful.
       setTimeout(() => {
         alert("Signed out!")
-        window.location.href = "../Login+Register Page/Login.html";
+        window.location.href = "/project/Login+Register Page/login.html";
     }, 1000);
     }).catch((error) => {
       // An error happened.

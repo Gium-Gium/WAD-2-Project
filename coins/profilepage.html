@@ -59,7 +59,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">Guide</a>
+            <a class="nav-link active text-white" aria-current="page" href="../Guides/guide.html">Guides</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="../coins/simulatorhome.html">Simulator</a>
@@ -135,6 +135,7 @@
             <td id="totalamount"></td>
           </tr>
         </table>
+        <button class="btn btn-primary" id="reset">Reset Wallet Balance</button>
       </div>
       <div class="col-6" style="padding-top:20px">
         <h1 class="words">Recommended Coins</h1>
@@ -148,10 +149,8 @@
   </div>
 
   <script>
-    setTimeout(() => {
-      getBCValue()
-        ;
-    }, 1000);
+
+
     function getBCValue() {
       var bcquantity = document.getElementById('BCquantity').textContent
       console.log(bcquantity)
@@ -171,9 +170,9 @@
       { "name": "Aptos", "website": "https://aptoslabs.com/" },
       { "name": "Mask Network", "website": "https://mask.io/" },
       { "name": "Pax Gold", "website": "https://www.paxos.com/paxgold/" },
-      { "name": "Zcash", "website": "https:://z.cash/" },
+      { "name": "Zcash", "website": "https://z.cash/" },
       { "name": "Waves", "website": "https://waves.tech/" },
-      { "name": "FileCoin", "website": "httpps://filecoin.io/" }
+      { "name": "FileCoin", "website": "https://filecoin.io/" }
     ]
     var str = ``
     function getCoinInfo() {
@@ -184,7 +183,7 @@
       document.getElementById('recommendation').innerHTML = str
     }
 
-    getCoinInfo()
+ 
 
 
     function getBNBSinglePrice() {
@@ -342,7 +341,7 @@
       var totaleth = Number(document.getElementById('ETHTotalValue').textContent)
       var totalbc = Number(document.getElementById('BCTotalValue').textContent)
       var totalbnb = Number(document.getElementById('BNBTotalValue').textContent)
-      var total = (totalada + totalbtc + totalbnb + totalsol + totaldoge + totalbc + totalbnb + totaleth).toFixed(2)
+      var total = (totalada + totalbtc + totalbnb + totalsol + totaldoge + totalbc + totaleth).toFixed(2)
 
       var previousTotal = Number(document.getElementById('totalamount').textContent)
       if (total > previousTotal) {
@@ -359,10 +358,15 @@
   <script src="profilepage.js" type="module"></script>
 
   <script>
+    getCoinInfo()
+    setTimeout(() => {
+      getBCValue()
+        ;
+    }, 500);
     setTimeout(() => {
       getTotal()
         ;
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
       getBNBSinglePrice()
         ;
@@ -394,26 +398,30 @@
     }, 1000);
 
     setInterval(() => {
-      getTotal()
+      getBCValue()
+        ;
     }, 1000);
     setInterval(() => {
+      getTotal()
+    }, 500);
+    setInterval(() => {
       getBNBSinglePrice()
-    }, 3000);
+    }, 1000);
     setInterval(() => {
       getBTCSinglePrice()
-    }, 3000);
+    }, 1000);
     setInterval(() => {
       getADASinglePrice()
-    }, 3000);
+    }, 1000);
     setInterval(() => {
       getDOGESinglePrice()
-    }, 3000);
+    }, 1000);
     setInterval(() => {
       getETHSinglePrice()
-    }, 3000);
+    }, 1000);
     setInterval(() => {
       getSOLSinglePrice()
-    }, 3000);
+    }, 1000);
 
   </script>
   <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js'
